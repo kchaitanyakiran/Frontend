@@ -4,7 +4,6 @@ import { useNavigate, useSearchParams } from 'react-router';
 import { Sprout, Mail, Lock, ArrowLeft, Shield, GraduationCap, Globe } from 'lucide-react';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
-import { Captcha } from '../../components/Captcha';
 import { api, normalizeRole, saveSession } from '../../lib/api';
 
 const roleConfig = {
@@ -45,7 +44,6 @@ const SignIn = () => {
     email: '',
     password: ''
   });
-  const [captchaVerified, setCaptchaVerified] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -63,10 +61,6 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!captchaVerified) {
-      setError('Please verify the CAPTCHA.');
-      return;
-    }
     try {
       setIsSubmitting(true);
       setError('');
@@ -200,13 +194,6 @@ const SignIn = () => {
                   placeholder="Password"
                 />
               </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Verification
-              </label>
-              <Captcha onVerify={setCaptchaVerified} />
             </div>
 
             <div className="text-right">
