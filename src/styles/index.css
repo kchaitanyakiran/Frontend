@@ -1,0 +1,74 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 1000px 100%;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1B5E20;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2E7D32;
+}
+
+/* Selection */
+::selection {
+  background: #1B5E20;
+  color: white;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
